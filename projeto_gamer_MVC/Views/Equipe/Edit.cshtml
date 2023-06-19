@@ -1,0 +1,48 @@
+@model Equipe
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<link rel="stylesheet" href="~/css/header-footer.css">
+<link rel="stylesheet" href="~/css/equipes.css">
+
+@if (ViewBag.UserName == null)
+{
+    <a asp-area=" " asp-controller="Login" asp-action="Index">
+        Login
+    </a>
+}
+else
+{
+    <section class="container-grid cadastro-equipes">
+            <form class="frm-cad-equipe" method="post" action='@Url.Action("Atualizar")' enctype="multipart/form-data">
+                <div class="cadequipe-titulo">
+                    <h1>Edição de Equipes</h1>
+                    <hr>
+                </div>
+
+                @* <input class="campo-entrada" type="number" id="idEquipe" placeholder="Digite o Id da sua equipe:"> *@
+                <input type="hidden" name="IdEquipe" value="@ViewBag.Equipe.IdEquipe">
+                <input class="campo-entrada" type="text" value="@ViewBag.Equipe.Nome" name="Nome" required">
+                <label class="foto" for="foto-file">
+                    @* Nenuma imagem selecionada... *@
+                    <input  type="file" name="Imagem" id="foto-file">
+                </label>
+                
+                <button type="submit">Atualizar</button>
+                
+                
+                
+                <!-- <select class="equipeid" id="equipeid">
+                    <option value="">Selecione uma Equipe</option>
+                    <option value="x">Equipe X</option>
+                    <option value="y">Equipe Y</option>
+                </select> -->
+            </form>
+            
+    </section>
+
+}
+
+        
